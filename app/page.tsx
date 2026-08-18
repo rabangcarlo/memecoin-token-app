@@ -33,7 +33,7 @@ function Skeletons(){return <div className="card-grid">{[1,2,3].map(i=><div clas
 
 function TokenCard({t,watched,onWatch,onOpen,compact=false}:{t:Token;watched:boolean;onWatch:()=>void;onOpen:()=>void;compact?:boolean}){
  return <article className={`token-card ${compact?"compact":""}`}>
-  <div className="token-title"><Logo t={t}/><div><h3>{t.name}</h3><p>${t.symbol} · {age(t.createdAt)}</p></div><RiskBadge value={t.risk}/></div>
+  <div className="token-title"><Logo t={t}/><div><h3>{t.name}</h3><p>${t.symbol} · {age(t.createdAt)}</p>{t.address&&<CopyMintButton mint={t.address}/>}</div><RiskBadge value={t.risk}/></div>
   <div className="card-core"><div><small>MARKET CAP</small><strong className="market-cap-value">{money(t.marketCap)}</strong></div><div><small>24H CHANGE</small><strong className={t.change>=0?"positive":"negative"}>{t.change>=0?"+":""}{t.change.toFixed(1)}%</strong></div><AIScore value={t.score}/></div>
   {!compact&&<><Signal t={t}/><div className="trust-row"><span><b>{momentum(t)}</b> momentum</span><span><b>{confidence(t)}%</b> confidence</span></div></>}<div className="actions"><button className="primary" onClick={onOpen}>View analysis</button><button className={watched?"watch saved":"watch"} onClick={onWatch}>{watched?"♥ Saved":"♡ Watch"}</button></div>
  </article>
