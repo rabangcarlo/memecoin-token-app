@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   title: "Meme Coin Predictor — Pump.fun Intelligence",
   description: "Real-time meme coin market intelligence, transparent AI scoring, and risk analysis.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/mcp-logo.png",
+    shortcut: "/mcp-logo.png",
   },
 };
 
