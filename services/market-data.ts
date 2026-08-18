@@ -1,0 +1,4 @@
+export interface TokenData { address:string; name:string; symbol:string; marketCap:number; liquidity:number; volume24h:number; holders:number; capturedAt:string }
+export interface HistoricalData { address:string; points:Array<{timestamp:string;price:number;marketCap:number;volume:number;liquidity:number;holders:number}> }
+export interface TokenMarketDataProvider { getToken(address:string):Promise<TokenData>; getNewTokens():Promise<TokenData[]>; getTrendingTokens():Promise<TokenData[]>; getHistoricalData(address:string):Promise<HistoricalData> }
+export class MockMarketDataProvider implements TokenMarketDataProvider { private unavailable():never{throw new Error("Mock provider: connect a live provider before requesting server data.")} async getToken(_address:string){return this.unavailable()} async getNewTokens(){return this.unavailable()} async getTrendingTokens(){return this.unavailable()} async getHistoricalData(_address:string){return this.unavailable()} }
